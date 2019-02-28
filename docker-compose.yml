@@ -1,0 +1,15 @@
+version: '3'
+services:
+  superset:
+    image: amancevice/superset
+    container_name: "houzz_superset"
+    restart: always
+    env_file: .env
+    environment:
+      MAPBOX_API_KEY: ${MAPBOX_API_KEY}
+      SUPERSET_HOME: /etc/superset
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./superset_config.py:/etc/superset/superset_config.py
+      - ./superset:/var/lib/superset
