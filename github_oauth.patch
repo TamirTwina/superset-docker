@@ -1,0 +1,14 @@
+--- /home/superset/manager.py	2019-03-05 21:36:12.406834953 +0000
++++ /usr/local/lib/python3.6/site-packages/flask_appbuilder/security/manager.py	2019-03-05 21:37:50.914812897 +0000
+@@ -377,7 +377,10 @@
+         if provider == 'github' or provider == 'githublocal':
+             me = self.appbuilder.sm.oauth_remotes[provider].get('user')
+             log.debug("User info from Github: {0}".format(me.data))
+-            return {'username': "github_" + me.data.get('login')}
++            return {'username': "github_" + me.data.get('login'),
++                    'email': me.data.get('login') + "fakeemail.com",
++                    'first_name': me.data.get('firstName', 'fake_first'),
++                    'last_name': me.data.get('lastName', 'fake_last')}
+         # for twitter
+         if provider == 'twitter':
+             me = self.appbuilder.sm.oauth_remotes[provider].get('account/settings.json')

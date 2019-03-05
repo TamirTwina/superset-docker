@@ -69,9 +69,10 @@ VOLUME /home/superset \
        /var/lib/superset
 WORKDIR /home/superset
 
-RUN sed -i "s|first_name=userinfo['first_name']|first_name='first_name'|g" /usr/local/lib/python3.6/site-packages/flask_appbuilder/security/manager.py  && \
-    sed -i "s|last_name=userinfo['last_name']|last_name='last_name'|g" /usr/local/lib/python3.6/site-packages/flask_appbuilder/security/manager.py  && \ 
-    sed -i "s|email=userinfo['email']|email=userinfo['username']+'houzzsuperset.com'|g" /usr/local/lib/python3.6/site-packages/flask_appbuilder/security/manager.py 
+
+COPY github_oauth.patch  /home/superset/
+RUN  patch /usr/local/lib/python3.6/site-packages/flask_appbuilder/security/manager.py /home/superset/github_oauth.patch && \
+     rm /home/superset/github_oauth.patch
 
 # Deploy application
 EXPOSE 8088
