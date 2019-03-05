@@ -17,39 +17,13 @@ superset_oauth_whitelist = os.getenv('SUPERSET_OAUTH_WHITELIST')
 ROW_LIMIT = 5000
 SUPERSET_WORKERS = 4
 
-# SECRET_KEY = 'a long and random secret key'
-
-CSRF_ENABLED = False
+CSRF_ENABLED = True
 
 AUTH_TYPE = AUTH_OAUTH
 
 AUTH_USER_REGISTRATION = True
 
-# NOTICE:
-AUTH_USER_REGISTRATION_ROLE = 'Admin'
-# OAUTH_PROVIDERS = [
-#     {
-#         'name': 'github',
-#         'icon': 'fa-github',
-#         'token_key': 'access_token',
-#         'whitelist' : '@houzz.com',
-#         'remote_app': {
-#             'base_url':'https://api.github.com/',
-#             'request_token_url': None,
-#             'access_token_url': 'https://github.com/login/oauth/access_token',
-#             'authorize_url': 'https://github.com/login/oauth/authorize',
-#             'access_token_method': 'POST',
-#             'access_token_params' : {
-#                 'client_id' : superset_oauth_key 
-#             },
-#             'request_token_params': {
-#                 'scope': 'read:user,user:email'
-#              },
-#             'consumer_key': superset_oauth_key,
-#             'consumer_secret': superset_oauth_secret
-#         }
-#     }
-# ]
+AUTH_USER_REGISTRATION_ROLE = 'Gamma'
 
 OAUTH_PROVIDERS = [
     {
