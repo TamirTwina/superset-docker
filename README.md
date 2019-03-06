@@ -4,5 +4,5 @@
 
 Start docker container
 ```bash
-docker-compose up -d superset
+docker-compose up --build -d superset
 ```

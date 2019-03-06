@@ -74,10 +74,9 @@ COPY github_oauth.patch  /home/superset/
 RUN  patch /usr/local/lib/python3.6/site-packages/flask_appbuilder/security/manager.py /home/superset/github_oauth.patch && \
      rm /home/superset/github_oauth.patch
 
-#Superset init & DB upgrade
+#Superset init & DB upgrade (only needed for first setup)
 COPY superset-init.sh  /home/superset/
 RUN chmod +x /home/superset/superset-init.sh
-RUN /home/superset/superset-init.sh
 
 # Deploy application
 EXPOSE 8088
